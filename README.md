@@ -1,5 +1,7 @@
 # Next.js blog powered by Hashnode Headless
 
+> **Note**: Blog is currently under construction. This is not yet ready to be used in production.
+
 This is a [Next.js](https://nextjs.org/) blog powered by [Hashnode Headless](https://hashnode.com/headless). This project is associated to a YouTube video demonstrating how to build this blog step-by-step (video coming soon).
 
 ## Configuration
