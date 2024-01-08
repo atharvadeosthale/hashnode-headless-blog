@@ -7,7 +7,7 @@ const GITHUB_URL = "https://github.com/atharvadeosthale/hashnode-headless-blog";
 
 export default function Navbar() {
   return (
-    <div className="w-full border-b">
+    <div className="w-full border-b mb-5">
       <div className="max-w-7xl w-full my-5 mx-auto flex justify-between items-center">
         <div>The coolest blog</div>
         <div className="flex items-center gap-5">
