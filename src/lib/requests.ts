@@ -44,8 +44,6 @@ export async function getPosts(pageSize: number, pageNumber: number) {
     }
   `;
 
-  console.log(query);
-
   const response = await request<GetPostsResponse>(endpoint, query);
 
   return response;
