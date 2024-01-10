@@ -16,6 +16,7 @@ export const env = createEnv({
   client: {
     NEXT_PUBLIC_HASHNODE_USERNAME: z.string().min(1),
     NEXT_PUBLIC_HASHNODE_ENDPOINT: z.string().url(),
+    NEXT_PUBLIC_HASHNODE_PUBLICATION_ID: z.string().min(1),
   },
   /*
    * Due to how Next.js bundles environment variables on Edge and Client,
@@ -26,5 +27,7 @@ export const env = createEnv({
   runtimeEnv: {
     NEXT_PUBLIC_HASHNODE_USERNAME: process.env.NEXT_PUBLIC_HASHNODE_USERNAME,
     NEXT_PUBLIC_HASHNODE_ENDPOINT: process.env.NEXT_PUBLIC_HASHNODE_ENDPOINT,
+    NEXT_PUBLIC_HASHNODE_PUBLICATION_ID:
+      process.env.NEXT_PUBLIC_HASHNODE_PUBLICATION_ID,
   },
 });

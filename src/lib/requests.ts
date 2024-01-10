@@ -1,9 +1,10 @@
 import request, { gql } from "graphql-request";
 import { env } from "./env";
-import { GetPostsResponse, UserWithUsername } from "./types";
+import { GetPostsArgs, GetPostsResponse, UserWithUsername } from "./types";
 
 const endpoint = env.NEXT_PUBLIC_HASHNODE_ENDPOINT;
 const username = env.NEXT_PUBLIC_HASHNODE_USERNAME;
+const publicationId = env.NEXT_PUBLIC_HASHNODE_PUBLICATION_ID;
 
 export async function getBlogName() {
   const query = gql`
@@ -19,25 +20,33 @@ export async function getBlogName() {
   return response.user.username;
 }
 
-export async function getPosts(pageSize: number, pageNumber: number) {
+export async function getPosts({
+  first = 12,
+  after = "",
+  pageParam = "",
+}: GetPostsArgs) {
   const query = gql`
     query {
-      user(username: "${username}") {
-        posts(pageSize: ${pageSize}, page: ${pageNumber}) {
-          nodes {
-            title
-            subtitle
-            content {
-              text
+      publication(id: "${publicationId}") {
+        posts(first: ${first}, after: "${pageParam}") {
+          edges {
+            node {
+              id
+              title
+              subtitle
+              content {
+                text
+              }
+              coverImage {
+                url
+              }
+              author {
+                name
+                username
+                profilePicture
+              }
             }
-            coverImage {
-              url
-            }
-            author {
-              name
-              username
-              profilePicture
-            }
+            cursor
           }
         }
       }
@@ -46,5 +55,5 @@ export async function getPosts(pageSize: number, pageNumber: number) {
 
   const response = await request<GetPostsResponse>(endpoint, query);
 
-  return response;
+  return response.publication.posts.edges;
 }

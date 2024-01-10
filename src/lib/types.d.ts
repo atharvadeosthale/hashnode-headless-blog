@@ -1,3 +1,5 @@
+import type { QueryFunctionContext } from "@tanstack/react-query";
+
 export type UserWithUsername = {
   user: {
     username: string;
@@ -21,9 +23,19 @@ export type PostMetadata = {
 };
 
 type GetPostsResponse = {
-  user: {
+  publication: {
     posts: {
-      nodes: PostMetadata[];
+      edges: {
+        node: PostMetadata;
+        cursor: string;
+      }[];
     };
   };
 };
+
+type GetPostsFunctionArgs = {
+  first: number;
+  after: string;
+};
+
+export type GetPostsArgs = QueryFunctionContext & GetPostsArgs;
