@@ -1,6 +1,6 @@
 import request, { gql } from "graphql-request";
 import { env } from "./env";
-import { GetPostsResponse, PostMetadata, UserWithUsername } from "./types";
+import { GetPostsResponse, UserWithUsername } from "./types";
 
 const endpoint = env.NEXT_PUBLIC_HASHNODE_ENDPOINT;
 const username = env.NEXT_PUBLIC_HASHNODE_USERNAME;
