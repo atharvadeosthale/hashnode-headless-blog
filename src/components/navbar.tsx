@@ -11,7 +11,7 @@ export default async function Navbar() {
 
   return (
     <div className="w-full border-b mb-5">
-      <div className="max-w-7xl w-full my-5 mx-auto flex justify-between items-center">
+      <div className="max-w-7xl w-full px-3 xl:p-0 my-5 mx-auto flex justify-between items-center">
         <div className="text-xl font-bold">
           {title.displayTitle || title.title}
         </div>

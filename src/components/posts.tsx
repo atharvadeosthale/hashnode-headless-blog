@@ -19,7 +19,7 @@ export default function Posts() {
       {data?.pages.map((group) =>
         group?.map((post) => <BlogCard key={post.cursor} post={post.node} />)
       )}
-      <div className="col-span-3 w-full flex justify-center my-5">
+      <div className="col-span-1 lg:col-span-3 w-full flex justify-center my-5">
         <Button
           className="w-full"
           variant="outline"
