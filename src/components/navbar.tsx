@@ -12,7 +12,9 @@ export default async function Navbar() {
   return (
     <div className="w-full border-b mb-5">
       <div className="max-w-7xl w-full my-5 mx-auto flex justify-between items-center">
-        <div>{title.displayTitle || title.title}</div>
+        <div className="text-xl font-bold">
+          {title.displayTitle || title.title}
+        </div>
         <div className="flex items-center gap-5">
           <ThemeToggler />
 
