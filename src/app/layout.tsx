@@ -22,6 +22,7 @@ export default function RootLayout({
         <Providers>
           <Navbar />
           {children}
+          <NewsletterCard />
         </Providers>
       </body>
     </html>
