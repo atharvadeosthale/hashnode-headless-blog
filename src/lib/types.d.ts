@@ -42,7 +42,11 @@ type GetPostsFunctionArgs = {
 export type GetPostsArgs = QueryFunctionContext & GetPostsArgs;
 
 export type SubscribeToNewsletterResponse = {
-  subscribeToNewsletter: {
-    status: string;
+  data?: {
+    subscribeToNewsletter: {
+      status: string;
+    };
   };
+
+  errors?: { message: string }[];
 };

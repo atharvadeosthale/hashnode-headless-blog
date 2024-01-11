@@ -79,10 +79,5 @@ export async function subscribeToNewsletter(email: string) {
     mutation
   );
 
-  // check if running on browser
-  if (window) {
-    localStorage.setItem("newsletter", email);
-  }
-
   return response;
 }
