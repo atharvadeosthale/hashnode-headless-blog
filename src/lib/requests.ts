@@ -8,7 +8,6 @@ import {
 } from "./types";
 
 const endpoint = env.NEXT_PUBLIC_HASHNODE_ENDPOINT;
-const username = env.NEXT_PUBLIC_HASHNODE_USERNAME;
 const publicationId = env.NEXT_PUBLIC_HASHNODE_PUBLICATION_ID;
 
 export async function getBlogName() {

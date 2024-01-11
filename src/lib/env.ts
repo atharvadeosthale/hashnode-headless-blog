@@ -14,7 +14,6 @@ export const env = createEnv({
    * 💡 You'll get type errors if these are not prefixed with NEXT_PUBLIC_.
    */
   client: {
-    NEXT_PUBLIC_HASHNODE_USERNAME: z.string().min(1),
     NEXT_PUBLIC_HASHNODE_ENDPOINT: z.string().url(),
     NEXT_PUBLIC_HASHNODE_PUBLICATION_ID: z.string().min(1),
   },
@@ -25,7 +24,6 @@ export const env = createEnv({
    * 💡 You'll get type errors if not all variables from `server` & `client` are included here.
    */
   runtimeEnv: {
-    NEXT_PUBLIC_HASHNODE_USERNAME: process.env.NEXT_PUBLIC_HASHNODE_USERNAME,
     NEXT_PUBLIC_HASHNODE_ENDPOINT: process.env.NEXT_PUBLIC_HASHNODE_ENDPOINT,
     NEXT_PUBLIC_HASHNODE_PUBLICATION_ID:
       process.env.NEXT_PUBLIC_HASHNODE_PUBLICATION_ID,
