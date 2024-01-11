@@ -1,14 +1,22 @@
-import BlogCard from "@/components/blog-card";
 import Posts from "@/components/posts";
 import { getPosts } from "@/lib/requests";
+import { PostMetadata } from "@/lib/types";
 import { QueryClient } from "@tanstack/react-query";
 
 export default async function Home() {
   const queryClient = new QueryClient();
 
-  await queryClient.prefetchQuery({
+  await queryClient.prefetchInfiniteQuery({
     queryKey: ["posts"],
     queryFn: getPosts,
+    getNextPageParam: (
+      lastPage: {
+        node: PostMetadata;
+        cursor: string;
+      }[]
+    ) =>
+      lastPage.length < 12 ? undefined : lastPage[lastPage.length - 1].cursor,
+    initialPageParam: "",
   });
 
   return (

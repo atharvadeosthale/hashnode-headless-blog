@@ -20,11 +20,7 @@ export async function getBlogName() {
   return response.user.username;
 }
 
-export async function getPosts({
-  first = 12,
-  after = "",
-  pageParam = "",
-}: GetPostsArgs) {
+export async function getPosts({ first = 12, pageParam = "" }: GetPostsArgs) {
   const query = gql`
     query {
       publication(id: "${publicationId}") {

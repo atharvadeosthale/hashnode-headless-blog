@@ -6,7 +6,7 @@ import BlogCard from "./blog-card";
 import { Button } from "./ui/button";
 
 export default function Posts() {
-  const { data, hasNextPage, fetchNextPage } = useInfiniteQuery({
+  const { data, hasNextPage, fetchNextPage, isFetching } = useInfiniteQuery({
     queryKey: ["posts"],
     queryFn: getPosts,
     getNextPageParam: (lastPage) =>
@@ -23,10 +23,14 @@ export default function Posts() {
         <Button
           className="w-full"
           variant="outline"
-          disabled={!hasNextPage}
+          disabled={!hasNextPage || isFetching}
           onClick={() => fetchNextPage()}
         >
-          {hasNextPage ? "Load more" : "That's all for today!"}
+          {isFetching
+            ? "Loading..."
+            : hasNextPage
+            ? "Load more"
+            : "That's all for today!"}
         </Button>
       </div>
     </>
