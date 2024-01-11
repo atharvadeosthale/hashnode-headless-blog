@@ -1,8 +1,9 @@
 import type { QueryFunctionContext } from "@tanstack/react-query";
 
-export type UserWithUsername = {
-  user: {
-    username: string;
+export type PublicationName = {
+  publication: {
+    title: string;
+    displayTitle?: string;
   };
 };
 

@@ -4,7 +4,7 @@ import {
   GetPostsArgs,
   GetPostsResponse,
   SubscribeToNewsletterResponse,
-  UserWithUsername,
+  PublicationName,
 } from "./types";
 
 const endpoint = env.NEXT_PUBLIC_HASHNODE_ENDPOINT;
@@ -14,15 +14,19 @@ const publicationId = env.NEXT_PUBLIC_HASHNODE_PUBLICATION_ID;
 export async function getBlogName() {
   const query = gql`
     query {
-      user(username: "${username}") {
-        username
+      publication(id: "${publicationId}") {
+        title
+        displayTitle
       }
     }
   `;
 
-  const response = await request<UserWithUsername>(endpoint, query);
+  const response = await request<PublicationName>(endpoint, query);
 
-  return response.user.username;
+  return {
+    title: response.publication.title,
+    displayTitle: response.publication.displayTitle,
+  };
 }
 
 export async function getPosts({ first = 12, pageParam = "" }: GetPostsArgs) {

@@ -7,7 +7,6 @@ import { subscribeToNewsletter } from "@/lib/requests";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 import { toast } from "sonner";
-import { SubscribeToNewsletterResponse } from "@/lib/types";
 import { ClientError } from "graphql-request";
 
 export default function NewsletterCard() {
