@@ -1,6 +1,11 @@
 import request, { gql } from "graphql-request";
 import { env } from "./env";
-import { GetPostsArgs, GetPostsResponse, UserWithUsername } from "./types";
+import {
+  GetPostsArgs,
+  GetPostsResponse,
+  SubscribeToNewsletterResponse,
+  UserWithUsername,
+} from "./types";
 
 const endpoint = env.NEXT_PUBLIC_HASHNODE_ENDPOINT;
 const username = env.NEXT_PUBLIC_HASHNODE_USERNAME;
@@ -53,4 +58,31 @@ export async function getPosts({ first = 12, pageParam = "" }: GetPostsArgs) {
   const response = await request<GetPostsResponse>(endpoint, query);
 
   return response.publication.posts.edges;
+}
+
+export async function subscribeToNewsletter(email: string) {
+  const mutation = gql`
+    mutation {
+      subscribeToNewsletter(
+        input: {
+          email: "${email}"
+          publicationId: "${publicationId}"
+        }
+      ) {
+        status
+      }
+    }
+  `;
+
+  const response = await request<SubscribeToNewsletterResponse>(
+    endpoint,
+    mutation
+  );
+
+  // check if running on browser
+  if (window) {
+    localStorage.setItem("newsletter", email);
+  }
+
+  return response;
 }

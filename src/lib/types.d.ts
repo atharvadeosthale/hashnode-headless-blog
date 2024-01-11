@@ -40,3 +40,9 @@ type GetPostsFunctionArgs = {
 };
 
 export type GetPostsArgs = QueryFunctionContext & GetPostsArgs;
+
+export type SubscribeToNewsletterResponse = {
+  subscribeToNewsletter: {
+    status: string;
+  };
+};

@@ -1,3 +1,4 @@
+import NewsletterCard from "@/components/newsletter-card";
 import Posts from "@/components/posts";
 import { getPosts } from "@/lib/requests";
 import { PostMetadata } from "@/lib/types";
@@ -23,6 +24,7 @@ export default async function Home() {
     <main className="max-w-7xl w-full mx-auto">
       <div className="grid grid-cols-3 gap-5 mt-5">
         <Posts />
+        <NewsletterCard />
       </div>
     </main>
   );
