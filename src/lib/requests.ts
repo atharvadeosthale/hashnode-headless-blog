@@ -12,15 +12,17 @@ const publicationId = env.NEXT_PUBLIC_HASHNODE_PUBLICATION_ID;
 
 export async function getBlogName() {
   const query = gql`
-    query {
-      publication(id: "${publicationId}") {
+    query getBlogName($publicationId: ObjectId!) {
+      publication(id: $publicationId) {
         title
         displayTitle
       }
     }
   `;
 
-  const response = await request<PublicationName>(endpoint, query);
+  const response = await request<PublicationName>(endpoint, query, {
+    publicationId,
+  });
 
   return {
     title: response.publication.title,
@@ -30,14 +32,15 @@ export async function getBlogName() {
 
 export async function getPosts({ first = 12, pageParam = "" }: GetPostsArgs) {
   const query = gql`
-    query {
-      publication(id: "${publicationId}") {
-        posts(first: ${first}, after: "${pageParam}") {
+    query getPosts($publicationId: ObjectId!, $first: Int!, $after: String) {
+      publication(id: $publicationId) {
+        posts(first: $first, after: $after) {
           edges {
             node {
               id
               title
               subtitle
+              slug
               content {
                 text
               }
@@ -58,19 +61,20 @@ export async function getPosts({ first = 12, pageParam = "" }: GetPostsArgs) {
     }
   `;
 
-  const response = await request<GetPostsResponse>(endpoint, query);
+  const response = await request<GetPostsResponse>(endpoint, query, {
+    publicationId,
+    first,
+    after: pageParam,
+  });
 
   return response.publication.posts.edges;
 }
 
 export async function subscribeToNewsletter(email: string) {
   const mutation = gql`
-    mutation {
+    mutation subscribeToNewsletter($publicationId: ObjectId!, $email: String!) {
       subscribeToNewsletter(
-        input: {
-          email: "${email}"
-          publicationId: "${publicationId}"
-        }
+        input: { email: $email, publicationId: $publicationId }
       ) {
         status
       }
@@ -79,8 +83,14 @@ export async function subscribeToNewsletter(email: string) {
 
   const response = await request<SubscribeToNewsletterResponse>(
     endpoint,
-    mutation
+    mutation,
+    {
+      publicationId,
+      email,
+    }
   );
 
   return response;
 }
+
+export async function getPostBySlug(slug: string) {}

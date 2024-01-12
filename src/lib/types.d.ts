@@ -10,6 +10,7 @@ export type PublicationName = {
 export type PostMetadata = {
   title: string;
   subtitle?: string;
+  slug: string;
   content: {
     text: string;
   };
