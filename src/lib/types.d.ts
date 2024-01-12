@@ -1,12 +1,16 @@
-export type UserWithUsername = {
-  user: {
-    username: string;
+import type { QueryFunctionContext } from "@tanstack/react-query";
+
+export type PublicationName = {
+  publication: {
+    title: string;
+    displayTitle?: string;
   };
 };
 
 export type PostMetadata = {
   title: string;
   subtitle?: string;
+  slug: string;
   content: {
     text: string;
   };
@@ -15,15 +19,53 @@ export type PostMetadata = {
   };
   author: {
     name: string;
-    username: string;
-    profilePicture: string;
+    profilePicture?: string;
   };
 };
 
 type GetPostsResponse = {
-  user: {
+  publication: {
     posts: {
-      nodes: PostMetadata[];
+      edges: {
+        node: PostMetadata;
+        cursor: string;
+      }[];
+    };
+  };
+};
+
+type GetPostsFunctionArgs = {
+  first: number;
+  after: string;
+};
+
+export type GetPostsArgs = QueryFunctionContext & GetPostsArgs;
+
+export type SubscribeToNewsletterResponse = {
+  data?: {
+    subscribeToNewsletter: {
+      status: string;
+    };
+  };
+
+  errors?: { message: string }[];
+};
+
+export type GetPostBySlugResponse = {
+  publication: {
+    post: {
+      title: string;
+      subtitle?: string;
+      coverImage: {
+        url: string;
+      };
+      content: {
+        html: string;
+      };
+      author: {
+        name: string;
+        profilePicture?: string;
+      };
     };
   };
 };
