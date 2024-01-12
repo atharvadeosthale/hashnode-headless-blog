@@ -2,7 +2,6 @@
 
 import { getPostBySlug } from "@/lib/requests";
 import { useQuery } from "@tanstack/react-query";
-import Markdown from "react-markdown";
 
 type Props = {
   slug: string;
