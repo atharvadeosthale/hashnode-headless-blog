@@ -5,7 +5,9 @@ import {
   GetPostsResponse,
   SubscribeToNewsletterResponse,
   PublicationName,
+  GetPostBySlugResponse,
 } from "./types";
+import { QueryFunctionContext } from "@tanstack/react-query";
 
 const endpoint = env.NEXT_PUBLIC_HASHNODE_ENDPOINT;
 const publicationId = env.NEXT_PUBLIC_HASHNODE_PUBLICATION_ID;
@@ -93,4 +95,26 @@ export async function subscribeToNewsletter(email: string) {
   return response;
 }
 
-export async function getPostBySlug(slug: string) {}
+export async function getPostBySlug(slug: string) {
+  const query = gql`
+    query getPostBySlug($publicationId: ObjectId!, $slug: String!) {
+      publication(id: $publicationId) {
+        post(slug: $slug) {
+          coverImage {
+            url
+          }
+          content {
+            html
+          }
+        }
+      }
+    }
+  `;
+
+  const response = await request<GetPostBySlugResponse>(endpoint, query, {
+    publicationId,
+    slug,
+  });
+
+  return response.publication.post;
+}
