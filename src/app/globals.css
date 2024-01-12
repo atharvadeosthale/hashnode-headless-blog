@@ -92,6 +92,14 @@ blockquote {
   @apply underline;
 }
 
+.blog-content ul {
+  @apply list-disc;
+}
+
+.blog-content ol {
+  @apply list-decimal;
+}
+
 div[data-node-type="callout"] {
   @apply flex gap-5 bg-green-500 dark:bg-green-900 rounded p-4;
 }
