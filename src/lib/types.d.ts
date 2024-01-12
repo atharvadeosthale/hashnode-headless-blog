@@ -19,8 +19,6 @@ export type PostMetadata = {
   };
   author: {
     name: string;
-    username: string;
-    profilePicture: string;
   };
 };
 
@@ -63,6 +61,10 @@ export type GetPostBySlugResponse = {
       };
       content: {
         html: string;
+      };
+      author: {
+        name: string;
+        profilePicture?: string;
       };
     };
   };

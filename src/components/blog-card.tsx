@@ -17,7 +17,7 @@ export default function BlogCard({ post }: Props) {
       </CardHeader>
       <CardContent>
         <h2 className="text-xl font-bold">{post.title}</h2>
-        <div className="mt-3">@{post.author.username}</div>
+        <div className="mt-3">{post.author.name}</div>
         <p className="text-gray-500 line-clamp-4 mt-3">
           {post.subtitle || post.content.text}
         </p>
