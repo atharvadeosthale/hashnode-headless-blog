@@ -10,7 +10,7 @@ export default function Posts() {
     queryKey: ["posts"],
     queryFn: getPosts,
     getNextPageParam: (lastPage) =>
-      lastPage.length < 12 ? undefined : lastPage[lastPage.length - 1].cursor,
+      lastPage.length < 9 ? undefined : lastPage[lastPage.length - 1].cursor,
     initialPageParam: "",
   });
 
