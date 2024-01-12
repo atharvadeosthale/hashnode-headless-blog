@@ -7,7 +7,6 @@ import {
   PublicationName,
   GetPostBySlugResponse,
 } from "./types";
-import { QueryFunctionContext } from "@tanstack/react-query";
 
 const endpoint = env.NEXT_PUBLIC_HASHNODE_ENDPOINT;
 const publicationId = env.NEXT_PUBLIC_HASHNODE_PUBLICATION_ID;
