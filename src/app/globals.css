@@ -65,7 +65,7 @@ code {
 }
 
 pre {
-  @apply bg-gray-100 dark:bg-gray-800 rounded p-4;
+  @apply bg-gray-100 dark:bg-gray-800 rounded p-4 overflow-x-scroll;
 }
 
 blockquote {
