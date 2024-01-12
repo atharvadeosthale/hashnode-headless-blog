@@ -2,6 +2,7 @@
 
 import { getPostBySlug } from "@/lib/requests";
 import { useQuery } from "@tanstack/react-query";
+import { notFound } from "next/navigation";
 
 type Props = {
   slug: string;
@@ -12,6 +13,8 @@ export default function Post({ slug }: Props) {
     queryKey: ["post", slug],
     queryFn: () => getPostBySlug(slug),
   });
+
+  if (!data) return notFound();
 
   return (
     <div>
