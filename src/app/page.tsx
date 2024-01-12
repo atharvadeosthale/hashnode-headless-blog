@@ -19,7 +19,7 @@ export default async function Home() {
         cursor: string;
       }[]
     ) =>
-      lastPage.length < 12 ? undefined : lastPage[lastPage.length - 1].cursor,
+      lastPage.length < 9 ? undefined : lastPage[lastPage.length - 1].cursor,
     initialPageParam: "",
   });
 

@@ -32,7 +32,7 @@ export async function getBlogName() {
   };
 }
 
-export async function getPosts({ first = 12, pageParam = "" }: GetPostsArgs) {
+export async function getPosts({ first = 9, pageParam = "" }: GetPostsArgs) {
   const query = gql`
     query getPosts($publicationId: ObjectId!, $first: Int!, $after: String) {
       publication(id: $publicationId) {
