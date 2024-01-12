@@ -100,6 +100,8 @@ export async function getPostBySlug(slug: string) {
     query getPostBySlug($publicationId: ObjectId!, $slug: String!) {
       publication(id: $publicationId) {
         post(slug: $slug) {
+          title
+          subtitle
           coverImage {
             url
           }

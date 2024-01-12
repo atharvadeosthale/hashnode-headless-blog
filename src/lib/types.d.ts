@@ -56,6 +56,8 @@ export type SubscribeToNewsletterResponse = {
 export type GetPostBySlugResponse = {
   publication: {
     post: {
+      title: string;
+      subtitle?: string;
       coverImage: {
         url: string;
       };
