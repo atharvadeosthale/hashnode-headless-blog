@@ -51,6 +51,7 @@ export async function getPosts({ first = 12, pageParam = "" }: GetPostsArgs) {
               }
               author {
                 name
+                profilePicture
               }
             }
             cursor

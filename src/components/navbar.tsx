@@ -13,7 +13,7 @@ export default async function Navbar() {
     <div className="w-full border-b mb-5">
       <div className="max-w-7xl w-full px-3 xl:p-0 my-5 mx-auto flex justify-between items-center">
         <div className="text-xl font-bold">
-          {title.displayTitle || title.title}
+          <Link href="/">{title.displayTitle || title.title}</Link>
         </div>
         <div className="flex items-center gap-5">
           <ThemeToggler />

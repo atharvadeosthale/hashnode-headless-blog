@@ -19,6 +19,7 @@ export type PostMetadata = {
   };
   author: {
     name: string;
+    profilePicture?: string;
   };
 };
 
