@@ -6,6 +6,17 @@ import {
   dehydrate,
 } from "@tanstack/react-query";
 
+export async function generateMetadata({
+  params,
+}: {
+  params: { slug: string };
+}) {
+  const data = await getPostBySlug(params.slug);
+  return {
+    title: data.title,
+  };
+}
+
 export default async function BlogPostPage({
   params,
 }: {

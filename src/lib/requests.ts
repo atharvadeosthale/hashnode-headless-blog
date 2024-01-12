@@ -18,6 +18,7 @@ export async function getBlogName() {
       publication(id: $publicationId) {
         title
         displayTitle
+        favicon
       }
     }
   `;
@@ -29,6 +30,7 @@ export async function getBlogName() {
   return {
     title: response.publication.title,
     displayTitle: response.publication.displayTitle,
+    favicon: response.publication.favicon,
   };
 }
 
