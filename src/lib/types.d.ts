@@ -4,6 +4,7 @@ export type PublicationName = {
   publication: {
     title: string;
     displayTitle?: string;
+    favicon?: string;
   };
 };
 

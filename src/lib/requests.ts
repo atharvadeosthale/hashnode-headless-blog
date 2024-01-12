@@ -7,7 +7,6 @@ import {
   PublicationName,
   GetPostBySlugResponse,
 } from "./types";
-import { QueryFunctionContext } from "@tanstack/react-query";
 
 const endpoint = env.NEXT_PUBLIC_HASHNODE_ENDPOINT;
 const publicationId = env.NEXT_PUBLIC_HASHNODE_PUBLICATION_ID;
@@ -18,6 +17,7 @@ export async function getBlogName() {
       publication(id: $publicationId) {
         title
         displayTitle
+        favicon
       }
     }
   `;
@@ -29,10 +29,11 @@ export async function getBlogName() {
   return {
     title: response.publication.title,
     displayTitle: response.publication.displayTitle,
+    favicon: response.publication.favicon,
   };
 }
 
-export async function getPosts({ first = 12, pageParam = "" }: GetPostsArgs) {
+export async function getPosts({ first = 9, pageParam = "" }: GetPostsArgs) {
   const query = gql`
     query getPosts($publicationId: ObjectId!, $first: Int!, $after: String) {
       publication(id: $publicationId) {
