@@ -56,7 +56,6 @@ export async function getPosts({ first = 12, pageParam = "" }: GetPostsArgs) {
             }
             cursor
           }
-          totalDocuments
         }
       }
     }

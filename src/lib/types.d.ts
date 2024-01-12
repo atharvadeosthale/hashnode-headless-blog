@@ -30,7 +30,6 @@ type GetPostsResponse = {
         node: PostMetadata;
         cursor: string;
       }[];
-      totalDocuments: number;
     };
   };
 };
